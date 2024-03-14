@@ -25,8 +25,8 @@ function ListGroup() {
                 ? "list-group-item active"
                 : "list-group-item"
             }
-            onMouseOver={(event) => handleTest(item, event, index)} // Fix: Pass both item, event, and index parameters to handleTest
-            onMouseLeave={() => setHoveredIndex(null)}
+            onClick={(event) => handleTest(item, event, index)} // Fix: Pass both item, event, and index parameters to handleTest
+            //onMouseLeave={() => setHoveredIndex(null)}
           >
             {item}
           </li>

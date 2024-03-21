@@ -1,20 +1,24 @@
-import { MouseEvent } from "react";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 
-function ListGroup() {
-  let items = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"];
+interface Props {
+  items: string[];
+  heading: string;
+  onSelectItem: (item: string) => void;
+}
 
+function ListGroup({ items, heading, onSelectItem }: Props) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null); // useState to alter active index
 
   //const handleClick = (event: MouseEvent) => console.log(event.clientX);
-  function handleTest(test: string, event: MouseEvent, index: number) {
-    console.log(test, event.clientX);
+  function handleTest(item: string, event: MouseEvent, index: number) {
+    console.log(event.clientX);
     setHoveredIndex(index);
+    onSelectItem(item);
   }
 
   return (
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       {items.length === 0 && <p>No items found</p>}
       <ul className="list-group">
         {items.map((item, index) => (
